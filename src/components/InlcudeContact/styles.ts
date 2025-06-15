@@ -1,18 +1,34 @@
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
+import variables from '../../styles/variaveis'
+
 export const Botao = styled(Link)`
-  font-weight: 500;
-  margin-bottom: 1.25rem;
-  font-size: 1rem;
-  padding: 8px 24px;
-  width: 100%;
-  border-radius: 4px;
   display: flex;
-  justify-content: center;
   align-items: center;
-  background-color: #25d366;
-  border: none;
-  box-shadow: 1px 2px 4px 1px rgba(0, 0, 0, 0.15);
+  justify-content: center;
+  width: 100%;
+  padding: ${variables.spacing.md} ${variables.spacing.lg};
+  background-color: ${variables.primary};
+  color: ${variables.white};
+  border-radius: ${variables.borderRadius.md};
+  font-size: 16px;
+  font-weight: 600;
   text-decoration: none;
-  color: inherit;
+  margin-bottom: ${variables.spacing.lg};
+  box-shadow: ${variables.shadow.sm};
+  transition: all 0.2s ease;
+  
+  &:hover {
+    background-color: #0056CC;
+    transform: translateY(-2px);
+    box-shadow: ${variables.shadow.md};
+  }
+  
+  &:active {
+    transform: translateY(0);
+  }
+  
+  svg {
+    margin-right: ${variables.spacing.sm};
+  }
 `
