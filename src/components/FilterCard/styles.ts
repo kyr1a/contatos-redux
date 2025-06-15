@@ -1,26 +1,42 @@
 import styled from 'styled-components'
-import variaveis from '../../styles/variaveis'
+import variables from '../../styles/variaveis'
 
 type Props = { ativo: boolean }
 
 export const Card = styled.div<Props>`
-  padding: 0.5rem;
-  color: ${(props) => (props.ativo ? variaveis.cor3 : variaveis.cor6)};
-  border-radius: 0.25rem;
-  text-align: right;
-  font-size: 1.5rem;
+  background-color: ${(props) => 
+    props.ativo ? variables.primary : variables.systemBackground};
+  color: ${(props) => 
+    props.ativo ? variables.white : variables.gray700};
+  border: 1px solid ${(props) => 
+    props.ativo ? variables.primary : variables.gray200};
+  border-radius: ${variables.borderRadius.md};
+  padding: ${variables.spacing.md};
+  text-align: center;
   cursor: pointer;
+  transition: all 0.2s ease;
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: ${variables.shadow.md};
+    background-color: ${(props) => 
+      props.ativo ? '#0056CC' : variables.gray50};
+  }
+  
+  &:active {
+    transform: translateY(0);
+  }
 `
 
 export const Contador = styled.span`
-  font-weight: 700;
   display: block;
-  font-size: 2rem;
-  text-align: center;
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: ${variables.spacing.xs};
 `
 
 export const Label = styled.span`
-  font-size: 0.875rem;
-  display: flex;
-  justify-content: center;
+  font-size: 14px;
+  font-weight: 500;
+  display: block;
 `
