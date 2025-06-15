@@ -1,112 +1,181 @@
 import styled from 'styled-components'
-import variaveis from '../../styles/variaveis'
+import variables from '../../styles/variaveis'
 
 type TagsProps = {
   grupos: string
   children: string
 }
 
-function corDeFundo(props: TagsProps): string {
+function getTagColor(props: TagsProps): string {
   if ('grupos' in props) {
-    if (props.grupos === 'trabalho') return variaveis.cor3
-    if (props.grupos === 'Familia') return variaveis.cor1
-    if (props.grupos === 'Pessoal') return variaveis.cor4
+    if (props.grupos === 'Trabalho') return variables.primary
+    if (props.grupos === 'Familia') return variables.secondary
+    if (props.grupos === 'Pessoal') return variables.warning
   }
-  return variaveis.cor7
+  return variables.gray500
 }
 
 export const CarddeContatos = styled.div`
-  background-color: #f2f2f2;
-  box-shadow: 1px 2px 4px 1px rgba(0, 0, 0, 0.15);
-  padding: 1rem;
-  width: 380px;
-  width: 100%;
-  height: 180px;
-  border-radius: 0.25rem;
+  background-color: ${variables.systemBackground};
+  border-radius: ${variables.borderRadius.md};
+  padding: ${variables.spacing.lg};
+  box-shadow: ${variables.shadow.sm};
+  border: 1px solid ${variables.gray200};
+  transition: all 0.2s ease;
+  position: relative;
+  
+  &:hover {
+    box-shadow: ${variables.shadow.md};
+    transform: translateY(-2px);
+  }
 `
+
 export const Tag = styled.span<TagsProps>`
-  padding: 0.25rem 1rem;
-  border-radius: 0.25rem;
-  font-size: 0.75rem;
-  color: ${variaveis.cor0};
-  font-weight: 700;
   display: inline-block;
-  background-color: ${(props) => corDeFundo(props)};
-  margin-bottom: 0.5rem;
+  padding: ${variables.spacing.xs} ${variables.spacing.sm};
+  border-radius: ${variables.borderRadius.sm};
+  font-size: 12px;
+  font-weight: 600;
+  color: ${variables.white};
+  background-color: ${(props) => getTagColor(props)};
+  margin-bottom: ${variables.spacing.md};
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 `
 
 export const MyTitle = styled.textarea`
-  font-weight: 700;
-  font-size: 1rem;
-  color: ${variaveis.cor8};
-  height: 1.3rem;
-  cursor: pointer;
-  display: block;
-  width: 100%;
-  resize: none;
+  font-weight: 600;
+  font-size: 18px;
+  color: ${variables.gray900};
+  background: transparent;
   border: none;
-  background-color: transparent;
+  resize: none;
+  width: 100%;
+  height: auto;
+  cursor: pointer;
+  
+  &:disabled {
+    cursor: default;
+  }
+  
+  &:focus {
+    outline: 2px solid ${variables.primary};
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
 `
 
 export const Email = styled.textarea`
-  color: ${variaveis.cor5};
-  font-size: 0.75rem;
-  line-height: 150%;
-  font-family: 'Roboto Mono', monospace;
-  height: 1.3rem;
-  font-family: 'Roboto Mono', monospace;
-  cursor: pointer;
-  display: block;
-  width: 100%;
-  resize: none;
+  color: ${variables.gray600};
+  font-size: 14px;
+  background: transparent;
   border: none;
-  background-color: transparent;
+  resize: none;
+  width: 100%;
+  height: auto;
+  cursor: pointer;
+  
+  &:disabled {
+    cursor: default;
+  }
+  
+  &:focus {
+    outline: 2px solid ${variables.primary};
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
 `
 
 export const TelPhone = styled.textarea`
-  color: #000;
-  font-weight: 700;
-  font-family: 1rem;
-  height: 1.3rem;
-  font-family: Roboto, monospace;
-  cursor: pointer;
-  display: block;
-  width: 100%;
+  color: ${variables.gray800};
+  font-size: 14px;
+  font-weight: 500;
+  background: transparent;
+  border: none;
   resize: none;
-  border: none;
-  background-color: transparent;
-`
-
-export const ActionBar = styled.div`
-  margin-top: 1rem;
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
-  padding-block: 0.5rem;
-`
-
-export const Btn = styled.button`
-  font-size: 0.75rem;
-  font-weight: 700;
-  color: ${variaveis.cor001};
-  padding: 0.25rem 0.75rem;
-  border: none;
+  width: 100%;
+  height: auto;
   cursor: pointer;
-  background-color: ${variaveis.cor6};
-  border-radius: 0.25rem;
-  margin-right: 0.5rem;
-`
-
-export const btnSalvar = styled(Btn)`
-  background-color: ${variaveis.cor2};
-  color: #0d1e07;
-`
-export const BtncancelarRemover = styled(Btn)`
-  background-color: ${variaveis.cor3};
-`
-export const btnEditar = styled(Btn)`
-  background-color: ${variaveis.cor1};
+  
+  &:disabled {
+    cursor: default;
+  }
+  
+  &:focus {
+    outline: 2px solid ${variables.primary};
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
 `
 
 export const MyDiv = styled.div`
   display: flex;
   align-items: center;
+  margin-bottom: ${variables.spacing.sm};
+  
+  svg {
+    color: ${variables.gray500};
+    margin-right: ${variables.spacing.sm};
+    flex-shrink: 0;
+  }
+`
+
+export const ActionBar = styled.div`
+  display: flex;
+  gap: ${variables.spacing.sm};
+  margin-top: ${variables.spacing.lg};
+  padding-top: ${variables.spacing.md};
+  border-top: 1px solid ${variables.gray200};
+`
+
+const BaseButton = styled.button`
+  padding: ${variables.spacing.sm} ${variables.spacing.md};
+  border-radius: ${variables.borderRadius.sm};
+  font-size: 14px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  
+  &:hover {
+    transform: translateY(-1px);
+  }
+  
+  &:active {
+    transform: translateY(0);
+  }
+`
+
+export const btnSalvar = styled(BaseButton)`
+  background-color: ${variables.primary};
+  color: ${variables.white};
+  
+  &:hover {
+    background-color: #0056CC;
+  }
+`
+
+export const Btn = styled(BaseButton)`
+  background-color: ${variables.gray200};
+  color: ${variables.gray700};
+  
+  &:hover {
+    background-color: ${variables.gray300};
+  }
+`
+
+export const btnEditar = styled(BaseButton)`
+  background-color: ${variables.secondary};
+  color: ${variables.white};
+  
+  &:hover {
+    background-color: #28A745;
+  }
+`
+
+export const BtncancelarRemover = styled(BaseButton)`
+  background-color: ${variables.danger};
+  color: ${variables.white};
+  
+  &:hover {
+    background-color: #DC3545;
+  }
 `
