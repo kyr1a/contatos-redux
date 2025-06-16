@@ -1,64 +1,108 @@
 import styled from 'styled-components'
-import variaveis from '../../styles/variaveis'
+import variables from '../../styles/variaveis'
 
 export const Asside = styled.aside`
-  padding: 1rem;
-  background-color: ${variaveis.cor003};
-  border-radius: 0.5rem 0 0 0.5rem;
-  box-shadow: 2px 0 2px rgba(0, 0, 0, 0.2);
+  background-color: ${variables.systemBackground};
+  border-radius: ${variables.borderRadius.lg};
+  padding: ${variables.spacing.lg};
+  box-shadow: ${variables.shadow.md};
+  height: fit-content;
+  
   @media (max-width: 768px) {
-    border-radius: 0.25rem;
-    box-shadow: none;
-    background-color: ${variaveis.cor0};
+    box-shadow: ${variables.shadow.sm};
   }
 `
+
+export const Search = styled.div`
+  display: flex;
+  align-items: center;
+  background-color: ${variables.gray100};
+  border: 1px solid ${variables.gray200};
+  border-radius: ${variables.borderRadius.sm};
+  padding: ${variables.spacing.sm};
+  margin-bottom: ${variables.spacing.lg};
+  transition: all 0.2s ease;
+  
+  &:focus-within {
+    border-color: ${variables.primary};
+    box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.1);
+  }
+  
+  input {
+    flex: 1;
+    border: none;
+    background: transparent;
+    padding: ${variables.spacing.xs};
+    font-size: 14px;
+    color: ${variables.gray900};
+    
+    &::placeholder {
+      color: ${variables.gray500};
+    }
+    
+    &:focus {
+      outline: none;
+    }
+  }
+`
+
+export const Lupa = styled.div`
+  color: ${variables.gray500};
+  margin-right: ${variables.spacing.sm};
+  display: flex;
+  align-items: center;
+  
+  svg {
+    width: 16px;
+    height: 16px;
+  }
+`
+
 export const Filtros = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 0.5rem;
-  padding-block: 1rem;
-`
-export const Search = styled.div`
-  border: 1px solid ${variaveis.cor12};
-  border-radius: 0.25rem;
-  background-color: ${variaveis.cor11};
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 1rem;
-  text-align: left;
-  input {
-    border: none;
-    padding: 0.5rem;
-    background-color: ${variaveis.cor11};
-    outline-style: none;
-    font-size: 0.875rem;
-  }
-`
-
-export const Lupa = styled.svg`
-  color: #0d7cc4;
-  height: 1rem;
-  width: 1.5rem;
-  display: flex;
-  align-content: center;
+  gap: ${variables.spacing.sm};
 `
 
 export const MyCard = styled.div`
-  border: 1px solid #222;
-  padding: 0.5rem;
-  border-radius: 0.25rem;
-  background-color: #f2f2f2;
-  font-size: 1.5rem;
-  color: #5e5e5e;
+  background-color: ${variables.systemBackground};
+  border: 1px solid ${variables.gray200};
+  border-radius: ${variables.borderRadius.md};
+  padding: ${variables.spacing.md};
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  
+  svg {
+    color: ${variables.gray500};
+    font-size: 20px;
+    margin-bottom: ${variables.spacing.xs};
+  }
+  
+  &:hover {
+    border-color: ${variables.primary};
+    box-shadow: ${variables.shadow.sm};
+  }
 `
 
 export const BtnVoltar = styled.button`
-  width: 325px;
   width: 100%;
-  background-color: #c5233b;
-  padding: 0.5rem 3.5rem;
-  border-radius: 4px;
-  font-weight: 500;
-  color: white;
+  padding: ${variables.spacing.md};
+  background-color: ${variables.primary};
+  color: ${variables.white};
+  border-radius: ${variables.borderRadius.sm};
+  font-size: 16px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  
+  &:hover {
+    background-color: #0056CC;
+    transform: translateY(-2px);
+  }
+  
+  &:active {
+    transform: translateY(0);
+  }
 `
